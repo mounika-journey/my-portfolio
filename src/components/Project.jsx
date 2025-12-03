@@ -27,8 +27,7 @@ export default function ProjectsSection() {
       tech: ["React", "EmailJS", "CSS Animations"],
     },
 
-    // ⭐ Added new projects from your resume ⭐
-
+    // Extra Projects
     {
       title: "BookEcho",
       description:
@@ -59,33 +58,33 @@ export default function ProjectsSection() {
     <section
       id="projects"
       style={{
-        padding: "90px 20px",
+        padding: "70px 15px",
         background: "linear-gradient(180deg, #020202, #090909, #050505)",
         color: "white",
         textAlign: "center",
       }}
     >
-      {/* Heading */}
       <h2
         style={{
-          fontSize: "2.8rem",
+          fontSize: "clamp(1.8rem, 5vw, 2.8rem)",
           background: "linear-gradient(90deg,#7ef0ff,#c97bff)",
           WebkitBackgroundClip: "text",
           color: "transparent",
           animation: "fadeDown 1.2s ease",
+          marginBottom: 40,
         }}
       >
         My Projects
       </h2>
 
-      {/* Projects Grid */}
       <div
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: 30,
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: 20,
+          padding: "0 5px",
           animation: "fadeUp 1.4s ease",
         }}
       >
@@ -93,43 +92,59 @@ export default function ProjectsSection() {
           <div
             key={i}
             style={{
-              padding: 22,
+              padding: 20,
               borderRadius: 14,
               background: "rgba(255,255,255,0.04)",
               border: "1px solid rgba(255,255,255,0.07)",
               backdropFilter: "blur(10px)",
-              boxShadow: "0 20px 50px rgba(0,0,0,0.5)",
-              transition: "transform .35s ease, box-shadow .35s ease",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
+              transition: "transform .3s ease, box-shadow .3s ease",
               cursor: "pointer",
             }}
+            onTouchStart={(e) => {
+              e.currentTarget.style.transform = "scale(0.98)";
+            }}
+            onTouchEnd={(e) => {
+              e.currentTarget.style.transform = "scale(1)";
+            }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-10px) scale(1.03)";
-              e.currentTarget.style.boxShadow =
-                "0 35px 80px rgba(0, 234, 255, 0.12)";
+              e.currentTarget.style.transform = "translateY(-8px)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0) scale(1)";
-              e.currentTarget.style.boxShadow =
-                "0 20px 50px rgba(0,0,0,0.5)";
+              e.currentTarget.style.transform = "translateY(0)";
             }}
           >
-            <h3 style={{ color: "#9ad8ff", marginBottom: 10, fontSize: "1.4rem" }}>
+            <h3
+              style={{
+                color: "#9ad8ff",
+                marginBottom: 10,
+                fontSize: "clamp(1.1rem, 4vw, 1.4rem)",
+              }}
+            >
               {p.title}
             </h3>
 
-            <p style={{ color: "#d6eaff", marginBottom: 16 }}>{p.description}</p>
+            <p
+              style={{
+                color: "#d6eaff",
+                marginBottom: 16,
+                fontSize: "clamp(0.9rem, 3.6vw, 1rem)",
+                lineHeight: "1.5",
+              }}
+            >
+              {p.description}
+            </p>
 
-            {/* Tech Badges */}
             {p.tech.map((t, idx) => (
               <span
                 key={idx}
                 style={{
                   display: "inline-block",
-                  padding: "6px 12px",
+                  padding: "5px 10px",
                   borderRadius: 10,
                   marginRight: 6,
-                  marginTop: 8,
-                  fontSize: "0.8rem",
+                  marginTop: 6,
+                  fontSize: "0.75rem",
                   background: "rgba(0,234,255,0.08)",
                   border: "1px solid rgba(0,234,255,0.2)",
                   color: "#eaffff",
@@ -142,16 +157,20 @@ export default function ProjectsSection() {
         ))}
       </div>
 
-      {/* Animations */}
       <style>{`
         @keyframes fadeUp {
           0% { opacity: 0; transform: translateY(40px); }
           100% { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes fadeDown {
-          0% { opacity: 0; transform: translateY(-30px); }
+          0% { opacity: 0; transform: translateY(-20px); }
           100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+          #projects {
+            padding: 60px 10px;
+          }
         }
       `}</style>
     </section>
