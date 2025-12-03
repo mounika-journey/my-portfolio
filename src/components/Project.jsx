@@ -5,30 +5,29 @@ export default function ProjectsSection() {
     {
       title: "Village Community Hub",
       description:
-        "A digital platform for villagers to submit service requests, access community resources, and connect with officials.",
-      tech: ["React", "Django", "REST API", "Firebase Auth"],
-      icon: "🌐",
+        "A digital platform for villagers to submit service requests and access community resources.",
+      live: "#",
+      code: "#",
+      image:
+        "https://via.placeholder.com/400x220.png?text=Village+Community+Hub",
     },
     {
       title: "Tele-Track CRM",
       description:
-        "Lead management CRM with dashboards, call tracking, status updates, analytics, and JWT authentication.",
-      tech: ["React", "Node.js", "Express", "MongoDB", "JWT"],
-      icon: "📞",
+        "Lead management CRM with call tracking, status updates, analytics, and JWT authentication.",
+      live: "#",
+      code: "#",
+      image:
+        "https://via.placeholder.com/400x220.png?text=Tele-Track+CRM",
     },
     {
       title: "BookLoop Marketplace",
       description:
-        "A book selling marketplace with image preview, WhatsApp chat, category filtering, and user uploads.",
-      tech: ["Django", "Python", "HTML/CSS", "SQLite"],
-      icon: "📚",
-    },
-    {
-      title: "Personal Portfolio Website",
-      description:
-        "A fully animated modern portfolio with projects, certificates, footer animations and EmailJS contact form.",
-      tech: ["React", "EmailJS", "CSS Animations"],
-      icon: "💻",
+        "A platform to buy/sell books with image upload, WhatsApp chat, and category filtering.",
+      live: "#",
+      code: "#",
+      image:
+        "https://via.placeholder.com/400x220.png?text=BookLoop+Marketplace",
     },
   ];
 
@@ -36,155 +35,126 @@ export default function ProjectsSection() {
     <section
       id="projects"
       style={{
-        padding: "100px 20px",
-        background: "linear-gradient(180deg,#020202,#090909,#050505)",
+        background: "#0d0f15",
+        padding: "80px 20px",
         color: "white",
-        textAlign: "center",
       }}
     >
-      {/* Heading */}
       <h2
         style={{
-          fontSize: "2.8rem",
-          fontWeight: "800",
-          marginBottom: 15,
-          background: "linear-gradient(90deg,#7ef0ff,#c97bff)",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
-          animation: "fadeDown 1.2s ease",
-          marginTop: "-40px",
+          textAlign: "center",
+          fontSize: "2rem",
+          fontWeight: "700",
+          color: "#4fa3ff",
+          marginBottom: "40px",
         }}
       >
-        Projects
+        My Projects
       </h2>
-
-      <div
-        style={{
-          width: 80,
-          height: 4,
-          background: "linear-gradient(90deg,#6fc9ff,#b36bff,#ff6bcb)",
-          margin: "0 auto 60px",
-          borderRadius: 10,
-        }}
-      ></div>
 
       {/* Cards Grid */}
       <div
         style={{
-          maxWidth: "1150px",
+          maxWidth: "1100px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: 30,
-          animation: "fadeUp 1.3s ease",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: "25px",
         }}
       >
         {projects.map((p, index) => (
           <div
             key={index}
             style={{
-              padding: 30,
-              borderRadius: 18,
-              background: "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.12)",
-              backdropFilter: "blur(12px)",
-              boxShadow: "0 12px 45px rgba(0,0,0,0.5)",
-              transition: "0.35s ease",
-              cursor: "pointer",
+              background: "#1a1d27",
+              borderRadius: "14px",
+              overflow: "hidden",
+              boxShadow: "0 4px 18px rgba(0,0,0,0.4)",
+              transition: "0.3s ease",
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-12px) scale(1.03)";
-              e.currentTarget.style.border =
-                "1px solid rgba(0,234,255,0.5)";
-              e.currentTarget.style.boxShadow =
-                "0 25px 70px rgba(0,234,255,0.2)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0) scale(1)";
-              e.currentTarget.style.border =
-                "1px solid rgba(255,255,255,0.12)";
-              e.currentTarget.style.boxShadow =
-                "0 12px 45px rgba(0,0,0,0.5)";
-            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "translateY(-8px)")
+            }
+            onMouseLeave={(e) =>
+              (e.currentTarget.style.transform = "translateY(0)")
+            }
           >
-            {/* Icon */}
-            <div
+            {/* Image */}
+            <img
+              src={p.image}
+              alt={p.title}
               style={{
-                fontSize: "2.4rem",
-                marginBottom: 12,
-                opacity: 0.9,
+                width: "100%",
+                height: "180px",
+                objectFit: "cover",
               }}
-            >
-              {p.icon}
-            </div>
+            />
 
-            {/* Project Title */}
-            <h3
-              style={{
-                fontSize: "1.5rem",
-                fontWeight: "700",
-                marginBottom: 12,
-                background: "linear-gradient(90deg,#7df3ff,#cc7bff)",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-              }}
-            >
-              {p.title}
-            </h3>
+            {/* Details */}
+            <div style={{ padding: "18px" }}>
+              <h3
+                style={{
+                  fontSize: "1.2rem",
+                  fontWeight: "700",
+                  marginBottom: "8px",
+                }}
+              >
+                {p.title}
+              </h3>
 
-            {/* Description */}
-            <p
-              style={{
-                color: "#d1e7ff",
-                lineHeight: "1.6",
-                fontSize: "0.95rem",
-                marginBottom: 18,
-              }}
-            >
-              {p.description}
-            </p>
+              <p
+                style={{
+                  color: "#b8c2d4",
+                  fontSize: "0.9rem",
+                  lineHeight: "1.5",
+                  marginBottom: "15px",
+                }}
+              >
+                {p.description}
+              </p>
 
-            {/* Tech Stack */}
-            <div style={{ marginTop: 10 }}>
-              {p.tech.map((t, i) => (
-                <span
-                  key={i}
+              {/* Buttons */}
+              <div style={{ display: "flex", gap: "10px" }}>
+                <a
+                  href={p.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
-                    display: "inline-block",
-                    padding: "7px 14px",
-                    margin: "6px 6px 0 0",
-                    fontSize: "0.8rem",
-                    borderRadius: 12,
-                    background: "rgba(255,255,255,0.06)",
-                    border: "1px solid rgba(255,255,255,0.15)",
-                    color: "#c6e8ff",
-                    transition: "0.3s ease",
+                    flex: 1,
+                    background: "#3c82ff",
+                    color: "white",
+                    padding: "8px",
+                    borderRadius: "6px",
+                    textAlign: "center",
+                    fontSize: "0.85rem",
+                    textDecoration: "none",
                   }}
                 >
-                  {t}
-                </span>
-              ))}
+                  🔗 View Live
+                </a>
+
+                <a
+                  href={p.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    flex: 1,
+                    background: "#2e2f36",
+                    color: "white",
+                    padding: "8px",
+                    borderRadius: "6px",
+                    textAlign: "center",
+                    fontSize: "0.85rem",
+                    textDecoration: "none",
+                  }}
+                >
+                  📄 View Code
+                </a>
+              </div>
             </div>
           </div>
         ))}
       </div>
-
-      {/* Animations */}
-      <style>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeDown {
-          from { opacity: 0; transform: translateY(-30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @media (max-width: 500px) {
-          #projects h2 {
-            font-size: 2.2rem;
-          }
-        }
-      `}</style>
     </section>
   );
 }
