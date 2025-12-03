@@ -1,43 +1,46 @@
 import React from "react";
 
 export default function AboutSection() {
+  const isMobile = window.innerWidth <= 768;
+
   const styles = {
     section: {
-      padding: "100px 20px",
+      padding: isMobile ? "60px 18px" : "100px 20px",
       background: "linear-gradient(180deg, #020202, #090909, #050505)",
       color: "white",
       textAlign: "center",
-      marginTop:'-10px'
+      marginTop: "-10px",
     },
 
     container: {
       maxWidth: "1100px",
       margin: "0 auto",
       display: "flex",
+      flexDirection: isMobile ? "column-reverse" : "row",
       alignItems: "center",
       justifyContent: "space-between",
-      flexWrap: "wrap",
-      gap: "40px",
+      gap: isMobile ? "25px" : "40px",
       animation: "fadeUp 1.2s ease",
-      marginTop:'30px'
+      marginTop: isMobile ? "10px" : "30px",
     },
 
     heading: {
-      fontSize: "42px",
+      fontSize: isMobile ? "34px" : "42px",
       fontWeight: "800",
       background: "linear-gradient(90deg, #7ef0ff, #c97bff)",
       WebkitBackgroundClip: "text",
       color: "transparent",
-      marginBottom: "50px",
-      marginTop:'-30px'
+      marginBottom: isMobile ? "30px" : "50px",
+      marginTop: isMobile ? "0px" : "-30px",
     },
 
     textBox: {
       flex: "1 1 520px",
-      textAlign: "left",
+      textAlign: isMobile ? "center" : "left",
       lineHeight: "1.7",
-      fontSize: "18px",
+      fontSize: isMobile ? "16px" : "18px",
       color: "#d6eaff",
+      padding: isMobile ? "0 5px" : "0",
     },
 
     bullet: {
@@ -47,6 +50,7 @@ export default function AboutSection() {
 
     imgCard: {
       flex: "0 0 340px",
+      width: isMobile ? "90%" : "340px",
       padding: "10px",
       background: "linear-gradient(90deg,#00eaff,#e700ff)",
       borderRadius: "18px",
@@ -54,6 +58,7 @@ export default function AboutSection() {
       backdropFilter: "blur(10px)",
       boxShadow: "0 20px 60px rgba(0, 234, 255, 0.08)",
       transition: "0.4s ease",
+      margin: isMobile ? "0 auto" : "0",
     },
 
     img: {
@@ -65,8 +70,8 @@ export default function AboutSection() {
     resumeBtn: {
       display: "inline-block",
       marginTop: "25px",
-      padding: "14px 28px",
-      fontSize: "18px",
+      padding: isMobile ? "12px 22px" : "14px 28px",
+      fontSize: isMobile ? "16px" : "18px",
       fontWeight: 700,
       borderRadius: "12px",
       textDecoration: "none",
@@ -88,13 +93,12 @@ export default function AboutSection() {
           <p>
             Hi, I’m <strong>Mounika</strong>, a passionate
             <span style={styles.bullet}> Full Stack Developer (MERN + Django)</span>
-            who loves creating modern and user-friendly applications.
+            who loves creating modern applications.
           </p>
 
           <p>
-            I completed my MCA with <span style={styles.bullet}>77.4%</span> from
-            Community Institute of Management Studies, Bengaluru, and completed a
-            full-stack internship at <span style={styles.bullet}>XCEL Corp</span>.
+            MCA Graduate with <span style={styles.bullet}>77.4%</span> and completed my full-stack internship at
+            <span style={styles.bullet}> XCEL Corp</span>.
           </p>
 
           <p>
@@ -103,19 +107,12 @@ export default function AboutSection() {
             MongoDB, SQLite, PostgreSQL, Git, GitHub, Postman.
           </p>
 
-          <p>
-            I enjoy building responsive UI, clean backend APIs, and meaningful digital
-            experiences. I’m currently seeking opportunities as a
-            <span style={styles.bullet}> Full Stack Developer / MERN Developer</span>.
-          </p>
-
-          {/* ⭐ Download Resume Button */}
           <a
             href="/Mounika_M_Resume.pdf"
             download
             style={styles.resumeBtn}
-            onMouseEnter={(e) => (e.target.style.transform = "scale(1.07)")}
-            onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
+            onMouseEnter={(e) => (e.target.style.transform = "scale(1.07)") }
+            onMouseLeave={(e) => (e.target.style.transform = "scale(1)") }
           >
             ⬇ Download Resume
           </a>
