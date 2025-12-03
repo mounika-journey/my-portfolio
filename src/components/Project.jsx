@@ -26,150 +26,120 @@ export default function ProjectsSection() {
         "A fully animated modern portfolio with projects, certificates, footer animations and EmailJS contact form.",
       tech: ["React", "EmailJS", "CSS Animations"],
     },
-
-    // Extra Projects
-    {
-      title: "BookEcho",
-      description:
-        "A Django-based bookshop platform that lets users exchange old books for discounts on new purchases.",
-      tech: ["Django", "HTML/CSS", "JavaScript"],
-    },
-    {
-      title: "Organic Web Store",
-      description:
-        "An online store for buying chemical-free organic products with secure checkout and clean UI.",
-      tech: ["PHP", "CSS", "SQL"],
-    },
-    {
-      title: "Online Banking System",
-      description:
-        "A banking web application with user login, money transfer, transaction history, and admin controls.",
-      tech: ["PHP", "MySQL", "HTML/CSS"],
-    },
-    {
-      title: "Online Mobile Shopping",
-      description:
-        "A mobile e-commerce platform with product search, filters, cart system, and secure authentication.",
-      tech: ["Java", "SQL", "HTML"],
-    },
   ];
 
   return (
     <section
       id="projects"
       style={{
-        padding: "70px 15px",
-        background: "linear-gradient(180deg, #020202, #090909, #050505)",
+        padding: "90px 20px",
+        background: "#000",
         color: "white",
         textAlign: "center",
       }}
     >
-      <h2
-        style={{
-          fontSize: "clamp(1.8rem, 5vw, 2.8rem)",
-          background: "linear-gradient(90deg,#7ef0ff,#c97bff)",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
-          animation: "fadeDown 1.2s ease",
-          marginBottom: 40,
-        }}
-      >
-        My Projects
-      </h2>
+      {/* Heading with line */}
+      <div style={{ marginBottom: 50 }}>
+        <h2
+          style={{
+            fontSize: "2.8rem",
+            fontWeight: "700",
+            marginBottom: 10,
+            color: "white",
+          }}
+        >
+          Projects
+        </h2>
+        <div
+          style={{
+            width: 80,
+            height: 4,
+            background:
+              "linear-gradient(90deg, #6fc9ff, #b36bff, #ff6bcb)",
+            margin: "0 auto",
+            borderRadius: 10,
+          }}
+        ></div>
+      </div>
 
+      {/* Project Cards */}
       <div
         style={{
-          maxWidth: "1200px",
+          maxWidth: "1100px",
           margin: "0 auto",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-          gap: 20,
-          padding: "0 5px",
-          animation: "fadeUp 1.4s ease",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: 25,
         }}
       >
-        {projects.map((p, i) => (
+        {projects.map((p, index) => (
           <div
-            key={i}
+            key={index}
             style={{
-              padding: 20,
-              borderRadius: 14,
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.07)",
-              backdropFilter: "blur(10px)",
+              padding: 25,
+              borderRadius: 18,
+              background: "rgba(255, 255, 255, 0.05)",
+              border: "1px solid rgba(255, 255, 255, 0.1)",
+              backdropFilter: "blur(12px)",
               boxShadow: "0 10px 30px rgba(0,0,0,0.4)",
-              transition: "transform .3s ease, box-shadow .3s ease",
+              transition: "0.3s ease",
               cursor: "pointer",
             }}
-            onTouchStart={(e) => {
-              e.currentTarget.style.transform = "scale(0.98)";
-            }}
-            onTouchEnd={(e) => {
-              e.currentTarget.style.transform = "scale(1)";
-            }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-8px)";
+              e.currentTarget.style.transform = "translateY(-10px)";
+              e.currentTarget.style.boxShadow =
+                "0 20px 40px rgba(140, 75, 255, 0.35)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow =
+                "0 10px 30px rgba(0,0,0,0.4)";
             }}
           >
             <h3
               style={{
-                color: "#9ad8ff",
+                fontSize: "1.4rem",
                 marginBottom: 10,
-                fontSize: "clamp(1.1rem, 4vw, 1.4rem)",
+                background: "linear-gradient(90deg,#7df3ff,#cc7bff)",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
               }}
             >
               {p.title}
             </h3>
 
-            <p
-              style={{
-                color: "#d6eaff",
-                marginBottom: 16,
-                fontSize: "clamp(0.9rem, 3.6vw, 1rem)",
-                lineHeight: "1.5",
-              }}
-            >
+            <p style={{ color: "#d1e7ff", marginBottom: 15, lineHeight: "1.6" }}>
               {p.description}
             </p>
 
-            {p.tech.map((t, idx) => (
-              <span
-                key={idx}
-                style={{
-                  display: "inline-block",
-                  padding: "5px 10px",
-                  borderRadius: 10,
-                  marginRight: 6,
-                  marginTop: 6,
-                  fontSize: "0.75rem",
-                  background: "rgba(0,234,255,0.08)",
-                  border: "1px solid rgba(0,234,255,0.2)",
-                  color: "#eaffff",
-                }}
-              >
-                {t}
-              </span>
-            ))}
+            <div style={{ marginTop: 10 }}>
+              {p.tech.map((t, i) => (
+                <span
+                  key={i}
+                  style={{
+                    display: "inline-block",
+                    padding: "6px 12px",
+                    marginRight: 6,
+                    marginTop: 8,
+                    fontSize: "0.8rem",
+                    borderRadius: 12,
+                    background: "rgba(255,255,255,0.07)",
+                    border: "1px solid rgba(255,255,255,0.15)",
+                  }}
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
           </div>
         ))}
       </div>
 
+      {/* Animation */}
       <style>{`
-        @keyframes fadeUp {
-          0% { opacity: 0; transform: translateY(40px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeDown {
-          0% { opacity: 0; transform: translateY(-20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 480px) {
-          #projects {
-            padding: 60px 10px;
+        @media (max-width: 500px) {
+          #projects h2 {
+            font-size: 2rem;
           }
         }
       `}</style>
