@@ -7,9 +7,9 @@ function Navbar() {
   return (
     <>
       <nav className="nav">
-        <h2 className="logo">Mounika M</h2>
+        <h2 className="logo">Mounika</h2>
 
-        {/* DESKTOP MENU */}
+        {/* Desktop menu */}
         <div className="desktop-menu">
           {["Home", "About", "Projects", "Certificates", "Contact"].map((i) => (
             <a key={i} href={`#${i.toLowerCase()}`} className="nav-link">
@@ -18,15 +18,15 @@ function Navbar() {
           ))}
         </div>
 
-        {/* HAMBURGER */}
+        {/* Hamburger */}
         <GiHamburgerMenu
-          size={28}
+          size={26}
           className="mobile-icon"
           onClick={() => setOpen(!open)}
         />
       </nav>
 
-      {/* MOBILE MENU */}
+      {/* Mobile menu */}
       <div className={`mobile-menu ${open ? "open" : ""}`}>
         {["Home", "About", "Projects", "Certificates", "Contact"].map((i) => (
           <a
@@ -41,116 +41,95 @@ function Navbar() {
       </div>
 
       <style>{`
-        /* NAV STYLES */
         .nav {
           position: fixed;
           top: 0;
           left: 0;
           right: 0;
-          height: 58px;
+          height: 55px;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 0 10px;
+          padding: 0 8px;
           background: rgba(0,0,0,0.55);
-          backdrop-filter: blur(12px);
-          border-bottom: 1px solid rgba(255,255,255,0.1);
+          backdrop-filter: blur(10px);
           z-index: 9999;
-          transition: all 0.3s ease;
+          overflow: hidden;
         }
 
         .logo {
           color: #fff;
-          font-size: 20px;
-          font-weight: 700;
-          letter-spacing: 1px;
+          font-size: 18px; 
+          margin: 0;
+          white-space: nowrap;
         }
 
-        /* DESKTOP LINKS */
+        .desktop-menu {
+          display: flex;
+          gap: 18px;
+        }
+
         .nav-link {
           color: #fff;
           text-decoration: none;
-          font-size: 16px;
+          font-size: 15px;
           font-weight: 600;
-          padding: 6px 10px;
-          transition: 0.3s ease;
-          position: relative;
         }
 
-        .nav-link:hover {
-          color: #ffcc66;
-        }
-
-        /* underline hover */
-        .nav-link::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -2px;
-          width: 0%;
-          height: 2px;
-          background: #ffcc66;
-          transition: 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-          width: 100%;
-        }
-
-        /* MOBILE ICON */
         .mobile-icon {
-          color: #fff;
           display: none;
+          color: white;
           cursor: pointer;
+          min-width: 26px;
         }
 
-        /* MOBILE MENU */
+        /* Mobile Menu */
         .mobile-menu {
           position: fixed;
-          top: 58px;
+          top: 55px;
           left: 0;
           right: 0;
           height: 0;
           overflow: hidden;
           background: rgba(0,0,0,0.95);
+          transition: height 0.35s ease;
           display: flex;
           flex-direction: column;
-          gap: 18px;
-          padding-left: 0;
-          transition: height 0.4s ease, padding 0.3s ease;
-          z-index: 9998;
+          gap: 15px;
         }
 
         .mobile-menu.open {
-          height: 260px;
-          padding: 20px;
+          height: 240px;
+          padding: 15px 0;
         }
 
         .mobile-link {
           color: #fff;
-          font-size: 18px;
-          text-decoration: none;
-          font-weight: 600;
           text-align: center;
-          transition: 0.3s ease;
+          text-decoration: none;
+          font-size: 18px;
         }
 
-        .mobile-link:hover {
-          color: #ffcc66;
-        }
-
-        /* RESPONSIVE */
+        /* RESPONSIVE FIX */
         @media (max-width: 768px) {
           .desktop-menu {
             display: none;
           }
-
           .mobile-icon {
             display: block;
           }
+        }
 
+        /* EXTRA FIX FOR SMALL PHONES (280px - 360px width) */
+        @media (max-width: 360px) {
           .nav {
-            padding: 0 12px;
+            padding: 0 6px;
+          }
+          .logo {
+            font-size: 16px;
+          }
+          .mobile-icon {
+            size: 24px;
           }
         }
       `}</style>
