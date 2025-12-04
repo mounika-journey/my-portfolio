@@ -25,12 +25,13 @@ export default function AboutSection() {
       width: imageSize,
       height: imageSize,
       borderRadius: "50%",
-      border: "5px solid #1f4fff",
-      padding: "3px",
-      background: "#1f4fff", // ⭐ Single blue color
+      border: "5px solid #1f4fff", // only border
+      padding: "0",                // removed background padding
+      background: "transparent",   // ⭐ no color
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
+      overflow: "hidden",          // keeps perfect circle
     },
 
     profileImage: {
@@ -38,7 +39,7 @@ export default function AboutSection() {
       height: "100%",
       borderRadius: "50%",
       objectFit: "cover",
-      objectPosition: "top", // keeps face visible nicely
+      objectPosition: "top",
     },
 
     heading: {
@@ -75,7 +76,6 @@ export default function AboutSection() {
       boxShadow: "0 0 18px rgba(120,80,255,0.4)",
     },
 
-    /* MOBILE RESPONSIVE */
     mobile: {
       display: "flex",
       flexDirection: "column-reverse",
@@ -94,7 +94,7 @@ export default function AboutSection() {
           <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
         </div>
 
-        {/* TEXT CONTENT */}
+        {/* ABOUT TEXT */}
         <div>
           <h2 style={styles.heading}>About Me</h2>
 
