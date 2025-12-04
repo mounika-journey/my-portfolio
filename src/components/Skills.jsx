@@ -1,133 +1,149 @@
 import React from "react";
 import {
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGithub,
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaNodeJs, FaGithub
 } from "react-icons/fa";
 import {
-  SiMongodb, SiExpress, SiDjango, SiPython,
-  SiPostman, SiFirebase, SiPostgresql, SiSqlite
+  SiMongodb, SiExpress, SiPostman, SiFirebase,
+  SiRedux, SiTailwindcss, SiVite, SiNetlify, SiRender, SiNpm
 } from "react-icons/si";
 
 export default function SkillsSection() {
-  const styles = {
-    section: {
-      padding: "90px 20px",
-      background: "linear-gradient(180deg, #050505, #070708, #0b0b0f)",
-      color: "white",
-      textAlign: "center",
-      overflow: "hidden",
-    },
-
-    heading: {
-      fontSize: "40px",
-      fontWeight: "800",
-      background: "linear-gradient(90deg,#00eaff,#ff00ff)",
-      WebkitBackgroundClip: "text",
-      color: "transparent",
-      marginBottom: "45px",
-      animation: "fadeDown 1s ease",
-    },
-
-    grid: {
-      display: "grid",
-      gridTemplateColumns: "repeat(auto-fit, minmax(135px, 1fr))",
-      gap: "22px",
-      maxWidth: "1100px",
-      margin: "0 auto",
-      paddingBottom: "30px",
-    },
-
-    card: {
-      background: "rgba(255,255,255,0.06)",
-      padding: "22px 15px",
-      borderRadius: "14px",
-      border: "1px solid rgba(255,255,255,0.1)",
-      backdropFilter: "blur(10px)",
-      transition: "0.35s ease",
-      cursor: "pointer",
-      transform: "translateY(0)",
-      animation: "floatUp 1s ease",
-    },
-
-    icon: {
-      fontSize: "42px",
-      marginBottom: "10px",
-      transition: "0.3s ease",
-    },
-
-    label: {
-      fontSize: "16px",
-      fontWeight: "600",
-      letterSpacing: "0.5px",
-    },
+  const container = {
+    padding: "80px 20px",
+    background: "linear-gradient(135deg,#2a0a4a,#3b0f5f,#22074a)",
+    minHeight: "100vh",
+    textAlign: "center",
+    color: "white",
   };
 
-  const skills = [
-    { name: "HTML", icon: <FaHtml5 />, color: "#ff5722" },
-    { name: "CSS", icon: <FaCss3Alt />, color: "#2965f1" },
+  const mainCard = {
+    backdropFilter: "blur(20px)",
+    background: "rgba(255,255,255,0.12)",
+    borderRadius: "22px",
+    border: "1px solid rgba(255,255,255,0.20)",
+    padding: "30px 22px",
+    maxWidth: "900px",
+    margin: "0 auto",
+  };
+
+  const grid = {
+    display: "grid",
+    gridTemplateColumns: "repeat(3,1fr)",
+    gap: "16px",
+    marginTop: "15px",
+  };
+
+  const card = {
+    background: "rgba(255,255,255,0.08)",
+    padding: "18px 10px",
+    borderRadius: "14px",
+    border: "1px solid rgba(255,255,255,0.1)",
+    textAlign: "center",
+    transition: "0.3s ease",
+  };
+
+  const icon = {
+    fontSize: "30px",
+    marginBottom: "6px",
+  };
+
+  const label = {
+    fontSize: "13px",
+    fontWeight: 600,
+  };
+
+  const techStack = [
+    { name: "HTML5", icon: <FaHtml5 />, color: "#ff5722" },
+    { name: "CSS3", icon: <FaCss3Alt />, color: "#2965f1" },
     { name: "JavaScript", icon: <FaJs />, color: "#f7df1e" },
-    { name: "React.js", icon: <FaReact />, color: "#61dafb" },
-    { name: "Node.js", icon: <FaNodeJs />, color: "#3c873a" },
-    { name: "Express.js", icon: <SiExpress />, color: "#ffffff" },
+    { name: "React", icon: <FaReact />, color: "#61dafb" },
+    { name: "Vite", icon: <SiVite />, color: "#a463f2" },
+    { name: "Tailwind", icon: <SiTailwindcss />, color: "#38bdf8" },
+    { name: "Redux", icon: <SiRedux />, color: "#9c27b0" },
+    { name: "Node.js", icon: <FaNodeJs />, color: "#4caf50" },
+    { name: "Express", icon: <SiExpress />, color: "#ffffff" },
     { name: "MongoDB", icon: <SiMongodb />, color: "#4db33d" },
-    { name: "Firebase", icon: <SiFirebase />, color: "#ffa000" },
-    { name: "Python", icon: <SiPython />, color: "#ffd343" },
-    { name: "Django", icon: <SiDjango />, color: "#0c4b33" },
-    { name: "PostgreSQL", icon: <SiPostgresql />, color: "#336791" },
-    { name: "SQLite", icon: <SiSqlite />, color: "#0f80cc" },
-    { name: "Git & GitHub", icon: <FaGithub />, color: "#fff" },
+  ];
+
+  const tools = [
     { name: "Postman", icon: <SiPostman />, color: "#f76935" },
+    { name: "Netlify", icon: <SiNetlify />, color: "#00ad9f" },
+    { name: "Render", icon: <SiRender />, color: "#9559e6" },
+    { name: "NPM", icon: <SiNpm />, color: "#d32f2f" },
+    { name: "Firebase", icon: <SiFirebase />, color: "#ffa000" },
+    { name: "GitHub", icon: <FaGithub />, color: "white" },
   ];
 
   return (
-    <section id="skills" style={styles.section}>
-      <h2 style={styles.heading}>My Skills</h2>
+    <section id="skills" style={container}>
+      <h2
+        style={{
+          fontSize: "34px",
+          fontWeight: "800",
+          color: "#7ed6ff",
+          marginBottom: "25px",
+        }}
+      >
+        My Skills ⚡
+      </h2>
 
-      <div style={styles.grid}>
-        {skills.map((skill) => (
-          <div
-            key={skill.name}
-            style={styles.card}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-8px) scale(1.06)";
-              e.currentTarget.style.boxShadow = `0 0 20px ${skill.color}44`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0) scale(1)";
-              e.currentTarget.style.boxShadow = "none";
-            }}
-          >
-            <div style={{ ...styles.icon, color: skill.color }}>
-              {skill.icon}
+      <div style={mainCard}>
+        {/* TECH STACK */}
+        <h3 style={{ fontSize: "18px", marginBottom: "12px", color: "#d4e7ff" }}>
+          💻 Tech Stack
+        </h3>
+
+        <div style={grid}>
+          {techStack.map((item) => (
+            <div
+              key={item.name}
+              style={card}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.06)";
+                e.currentTarget.style.boxShadow = `0 0 18px ${item.color}55`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <div style={{ ...icon, color: item.color }}>{item.icon}</div>
+              <p style={label}>{item.name}</p>
             </div>
-            <p style={styles.label}>{skill.name}</p>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {/* TOOLS */}
+        <h3
+          style={{
+            marginTop: "28px",
+            fontSize: "18px",
+            color: "#ffd2d2",
+          }}
+        >
+          🧰 Tools I Use
+        </h3>
+
+        <div style={grid}>
+          {tools.map((item) => (
+            <div
+              key={item.name}
+              style={card}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.06)";
+                e.currentTarget.style.boxShadow = `0 0 18px ${item.color}55`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <div style={{ ...icon, color: item.color }}>{item.icon}</div>
+              <p style={label}>{item.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
-
-      <style>
-        {`
-          /* Fade & Float Animations */
-          @keyframes fadeDown {
-            0% { opacity: 0; transform: translateY(-20px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
-
-          @keyframes floatUp {
-            0% { opacity: 0; transform: translateY(15px); }
-            100% { opacity: 1; transform: translateY(0); }
-          }
-
-          /* Mobile Optimization */
-          @media (max-width: 768px) {
-            #skills h2 {
-              font-size: 32px !important;
-            }
-            #skills div {
-              animation-duration: 0.8s !important;
-            }
-          }
-        `}
-      </style>
     </section>
   );
 }
