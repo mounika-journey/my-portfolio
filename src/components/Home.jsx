@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-export default function Home() {
+function Home() {
   const typingRef = useRef(null);
 
   useEffect(() => {
@@ -15,9 +15,9 @@ export default function Home() {
     let charIndex = 0;
 
     const type = () => {
-      if (typingRef.current)
+      if (typingRef.current) {
         typingRef.current.textContent = texts[index].slice(0, charIndex);
-
+      }
       charIndex++;
 
       if (charIndex > texts[index].length) {
@@ -27,180 +27,179 @@ export default function Home() {
         }, 900);
       }
 
-      setTimeout(type, 95);
+      setTimeout(type, 120);
     };
-
     type();
   }, []);
 
-  const isMobile = window.innerWidth <= 768;
-
-  const styles = {
-    section: {
-      position: "relative",
-      minHeight: "100vh",
-      width: "100%",
-      padding: isMobile ? "110px 25px 60px" : "140px 70px",
-      color: "white",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      textAlign: isMobile ? "center" : "left",
-      alignItems: isMobile ? "center" : "flex-start",
-      overflow: "hidden",
-      background: "radial-gradient(circle at 20% 30%, #1a1a1a, #000)",
-      animation: "fadeInSlow 1.4s ease-out forwards",
-    },
-
-    floatingShape1: {
-      position: "absolute",
-      top: "-80px",
-      right: "-60px",
-      width: "250px",
-      height: "250px",
-      background: "linear-gradient(135deg, #ff7ae0, #6b6bff)",
-      filter: "blur(80px)",
-      animation: "float 6s infinite ease-in-out",
-      opacity: 0.4,
-      borderRadius: "50%",
-    },
-
-    floatingShape2: {
-      position: "absolute",
-      bottom: "-60px",
-      left: "-50px",
-      width: "260px",
-      height: "260px",
-      background: "linear-gradient(135deg, #4fd1ff, #00ffaa)",
-      filter: "blur(90px)",
-      animation: "float 7s infinite ease-in-out reverse",
-      opacity: 0.3,
-      borderRadius: "50%",
-    },
-
-    cardGlow: {
-      position: "absolute",
-      inset: "0",
-      background: "linear-gradient(120deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03))",
-      backdropFilter: "blur(20px)",
-      borderRadius: "20px",
-      zIndex: -1,
-    },
-
-    title: {
-      fontSize: isMobile ? "36px" : "60px",
-      fontWeight: "900",
-      lineHeight: "1.2",
-      marginBottom: "18px",
-      animation: "slideDown 1.2s ease-out",
-      letterSpacing: "1px",
-    },
-
-    gradientName: {
-      background: "linear-gradient(90deg,#4fd1ff,#d16bff,#ff79c6,#ffcc70)",
-      WebkitBackgroundClip: "text",
-      color: "transparent",
-      textShadow: "0 0 20px rgba(255,255,255,0.1)",
-    },
-
-    typing: {
-      fontSize: isMobile ? "22px" : "30px",
-      fontWeight: "700",
-      marginBottom: "25px",
-      minHeight: "34px",
-      letterSpacing: "0.7px",
-      color: "#4fd1ff",
-      animation: "fadeUp 1.2s ease",
-    },
-
-    subtitle: {
-      maxWidth: "640px",
-      fontSize: isMobile ? "16px" : "20px",
-      lineHeight: "1.8",
-      color: "#d7d7d7",
-      marginBottom: "45px",
-      animation: "fadeUp 1.4s ease",
-    },
-
-    buttonWrapper: {
-      display: "flex",
-      gap: isMobile ? "14px" : "20px",
-      flexDirection: isMobile ? "column" : "row",
-      width: isMobile ? "100%" : "auto",
-    },
-
-    btnPrimary: {
-      padding: "14px 38px",
-      borderRadius: "40px",
-      background: "linear-gradient(90deg,#4fd1ff,#a763ff)",
-      color: "#fff",
-      fontWeight: "700",
-      textDecoration: "none",
-      fontSize: isMobile ? "16px" : "18px",
-      width: isMobile ? "100%" : "auto",
-      textAlign: "center",
-      boxShadow: "0 0 20px rgba(79,209,255,0.5)",
-      transition: "0.3s",
-    },
-
-    btnOutline: {
-      padding: "14px 38px",
-      borderRadius: "40px",
-      border: "2px solid #4fd1ff",
-      color: "#4fd1ff",
-      fontWeight: "700",
-      textDecoration: "none",
-      fontSize: isMobile ? "16px" : "18px",
-      width: isMobile ? "100%" : "auto",
-      textAlign: "center",
-      transition: "0.3s",
-    },
-  };
-
   return (
     <section id="home" style={styles.section}>
-      {/* Floating neon shapes */}
-      <div style={styles.floatingShape1}></div>
-      <div style={styles.floatingShape2}></div>
+      {/* Glow */}
+      <div style={styles.glowTop}></div>
+      <div style={styles.glowBottom}></div>
 
-      <h1 style={styles.title}>
-        Hi, I'm <span style={styles.gradientName}>Mounika M</span>
-      </h1>
+      <div style={styles.contentWrapper}>
+        <h1 style={styles.title}>
+          Hi, I'm{" "}
+          <span
+            style={{
+              background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
+              WebkitBackgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            Mounika
+          </span>
+        </h1>
 
-      <h2 ref={typingRef} style={styles.typing}></h2>
+        <h2 ref={typingRef} style={styles.typing}></h2>
 
-      <p style={styles.subtitle}>
-        I build high-performance and responsive MERN stack applications with a
-        strong focus on UI, animations and modern user experience.
-      </p>
+        <p style={styles.subtitle}>
+          I build fast, responsive and modern web applications using the MERN
+          stack.
+        </p>
 
-      <div style={styles.buttonWrapper}>
-        <a href="#projects" style={styles.btnPrimary}>View Projects</a>
-        <a href="#contact" style={styles.btnOutline}>Hire Me</a>
+        <div style={styles.buttonRow}>
+          <a href="#projects" style={styles.btnPrimary}>
+            Projects
+          </a>
+          <a href="#contact" style={styles.btnOutline}>
+            Hire Me
+          </a>
+        </div>
       </div>
 
-      <style>{`
-        @keyframes fadeInSlow {
-          0% { opacity: 0; transform: translateY(40px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
+      {/* Mobile Only Styling */}
+      <style>
+        {`
+        @media (max-width: 768px) {
+          #home {
+            padding-top: 90px !important;
+            padding-bottom: 70px !important;
+          }
 
-        @keyframes slideDown {
-          0% { opacity: 0; transform: translateY(-20px);}
-          100% { opacity: 1; transform: translateY(0);}
-        }
+          #home h1 {
+            font-size: 36px !important;
+            line-height: 1.2 !important;
+          }
 
-        @keyframes fadeUp {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
+          #home h2 {
+            font-size: 18px !important;
+          }
 
-        @keyframes float {
-          0% { transform: translateY(0); }
-          50% { transform: translateY(-25px); }
-          100% { transform: translateY(0); }
+          #home p {
+            font-size: 15px !important;
+            padding: 0 10px !important;
+          }
+
+          .button-row a {
+            font-size: 14px !important;
+            padding: 9px 20px !important;
+          }
         }
-      `}</style>
+      `}
+      </style>
     </section>
   );
 }
+
+const styles = {
+  section: {
+    minHeight: "100vh",
+    background: "#000",
+    color: "#fff",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "0 22px",
+    textAlign: "center",
+    position: "relative",
+    overflow: "hidden",
+  },
+
+  contentWrapper: {
+    zIndex: 10,
+    maxWidth: "500px",
+    animation: "fadeUp 1.2s ease",
+  },
+
+  title: {
+    fontSize: "40px",
+    fontWeight: "800",
+    marginBottom: "10px",
+  },
+
+  typing: {
+    fontSize: "20px",
+    minHeight: "26px",
+    marginBottom: "18px",
+    fontWeight: "600",
+    background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
+    WebkitBackgroundClip: "text",
+    color: "transparent",
+  },
+
+  subtitle: {
+    fontSize: "16px",
+    lineHeight: "1.7",
+    color: "#d8d8d8",
+    marginBottom: "22px",
+  },
+
+  buttonRow: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "14px",
+  },
+
+  btnPrimary: {
+    padding: "12px 28px",
+    background: "linear-gradient(90deg,#4fd1ff,#bb61ff)",
+    color: "#fff",
+    fontWeight: "700",
+    textDecoration: "none",
+    borderRadius: "30px",
+  },
+
+  btnOutline: {
+    padding: "12px 28px",
+    borderRadius: "30px",
+    border: "2px solid #4fd1ff",
+    color: "#4fd1ff",
+    fontWeight: "700",
+    textDecoration: "none",
+  },
+
+  glowTop: {
+    position: "absolute",
+    top: "-90px",
+    left: "-70px",
+    width: "220px",
+    height: "220px",
+    background: "rgba(0, 200, 255, 0.25)",
+    borderRadius: "50%",
+    filter: "blur(90px)",
+  },
+
+  glowBottom: {
+    position: "absolute",
+    bottom: "-100px",
+    right: "-70px",
+    width: "240px",
+    height: "240px",
+    background: "rgba(255, 0, 130, 0.25)",
+    borderRadius: "50%",
+    filter: "blur(90px)",
+  },
+};
+
+/* FadeUp Animation */
+const styleSheet = document.createElement("style");
+styleSheet.innerHTML = `
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}`;
+document.head.appendChild(styleSheet);
+
+export default Home;
