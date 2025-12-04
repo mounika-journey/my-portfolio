@@ -23,9 +23,7 @@ export default function AboutSection() {
     leftImageBox: {
   width: imageSize,
   height: imageSize,
-  borderRadius: "50%",
   border: "5px solid #1f4fff",
-  padding: "2px", // smaller padding = cleaner circle
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
