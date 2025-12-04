@@ -1,6 +1,9 @@
 import React from "react";
 
 export default function AboutSection() {
+  const isMobile = window.innerWidth <= 768;
+  const imageSize = isMobile ? "220px" : "280px";
+
   const styles = {
     section: {
       padding: "90px 20px",
@@ -18,8 +21,8 @@ export default function AboutSection() {
     },
 
     leftImageBox: {
-      width: "280px",
-      height: "280px",
+      width: imageSize,
+      height: imageSize,
       borderRadius: "50%",
       border: "5px solid #1f4fff",
       padding: "4px",
@@ -70,17 +73,14 @@ export default function AboutSection() {
       boxShadow: "0 0 18px rgba(120,80,255,0.4)",
     },
 
-    /* MOBILE RESPONSIVE */
     mobile: {
       display: "flex",
-      flexDirection: "column",
+      flexDirection: "column-reverse", // FIXED: Image first, text second
       alignItems: "center",
       textAlign: "center",
       gap: "30px",
     },
   };
-
-  const isMobile = window.innerWidth <= 768;
 
   return (
     <section id="about" style={styles.section}>
@@ -91,7 +91,7 @@ export default function AboutSection() {
           <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
         </div>
 
-        {/* RIGHT TEXT */}
+        {/* TEXT SECTION */}
         <div>
           <h2 style={styles.heading}>About Me</h2>
 
@@ -112,12 +112,8 @@ export default function AboutSection() {
             JavaScript, React.js, Node.js, Django, Python, MongoDB, SQL, Git, GitHub.
           </p>
 
-          <a
-            href="/Mounika_M_Resume.pdf"
-            download
-            style={styles.resumeButton}
-          >
-            ⬇ Download Resume fff
+          <a href="/Mounika_M_Resume.pdf" download style={styles.resumeButton}>
+            ⬇ Download Resume
           </a>
         </div>
       </div>
