@@ -20,21 +20,25 @@ export default function AboutSection() {
       gap: "50px",
     },
 
+    /* --- PROFILE IMAGE CIRCLE --- */
     leftImageBox: {
-  width: imageSize,
-  height: imageSize,
-  border: "5px solid #1f4fff",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-},
-
+      width: imageSize,
+      height: imageSize,
+      borderRadius: "50%",
+      border: "5px solid #1f4fff",
+      padding: "3px",
+      background: "#1f4fff", // ⭐ Single blue color
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
 
     profileImage: {
       width: "100%",
       height: "100%",
       borderRadius: "50%",
       objectFit: "cover",
+      objectPosition: "top", // keeps face visible nicely
     },
 
     heading: {
@@ -71,9 +75,10 @@ export default function AboutSection() {
       boxShadow: "0 0 18px rgba(120,80,255,0.4)",
     },
 
+    /* MOBILE RESPONSIVE */
     mobile: {
       display: "flex",
-      flexDirection: "column-reverse", // FIXED: Image first, text second
+      flexDirection: "column-reverse",
       alignItems: "center",
       textAlign: "center",
       gap: "30px",
@@ -83,20 +88,20 @@ export default function AboutSection() {
   return (
     <section id="about" style={styles.section}>
       <div style={isMobile ? styles.mobile : styles.container}>
-        
+
         {/* PROFILE IMAGE */}
         <div style={styles.leftImageBox}>
           <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
         </div>
 
-        {/* TEXT SECTION */}
+        {/* TEXT CONTENT */}
         <div>
           <h2 style={styles.heading}>About Me</h2>
 
           <p style={styles.textBlock}>
             Hello! I’m <strong>Mounika</strong>, a passionate 
-            <span style={styles.bullet}> Full Stack Developer</span> who loves building 
-            clean, functional, and modern web applications.
+            <span style={styles.bullet}> Full Stack Developer</span> who loves
+            building clean, functional, and modern web applications.
           </p>
 
           <p style={styles.textBlock}>
