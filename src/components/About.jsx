@@ -1,14 +1,16 @@
 import React from "react";
 
 export default function AboutSection() {
-  const isMobile = window.innerWidth <= 768;
-  const imageSize = isMobile ? "220px" : "280px";
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  const imageSize = isMobile ? "180px" : "280px";
 
   const styles = {
     section: {
-      padding: "90px 20px",
+      padding: isMobile ? "50px 20px" : "90px 20px",
       background: "#0b0c10",
       color: "white",
+      textAlign: isMobile ? "center" : "left",
     },
 
     container: {
@@ -20,17 +22,23 @@ export default function AboutSection() {
       gap: "40px",
     },
 
-    /* ---- SIMPLE PERFECT CIRCLE IMAGE ---- */
+    mobile: {
+      display: "flex",
+      flexDirection: "column-reverse",
+      alignItems: "center",
+      gap: "25px",
+    },
+
     leftImageBox: {
       width: imageSize,
       height: imageSize,
       borderRadius: "50%",
-      border: "5px solid #1f4fff",
+      border: "4px solid #1f4fff",
       overflow: "hidden",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: "#000", // no visible block
+      background: "transparent",
     },
 
     profileImage: {
@@ -38,22 +46,23 @@ export default function AboutSection() {
       height: "100%",
       objectFit: "cover",
       objectPosition: "center",
+      borderRadius: "50%",
     },
 
     heading: {
-      fontSize: "40px",
-      fontWeight: "800",
-      marginBottom: "15px",
+      fontSize: isMobile ? "30px" : "40px",
+      fontWeight: 800,
+      marginBottom: "12px",
       background: "linear-gradient(90deg, #7ef0ff, #ba7bff)",
       WebkitBackgroundClip: "text",
       color: "transparent",
     },
 
     textBlock: {
-      fontSize: "17px",
-      lineHeight: "1.8",
+      fontSize: isMobile ? "15px" : "17px",
+      lineHeight: isMobile ? "1.6" : "1.8",
       color: "#d9e7ff",
-      marginBottom: "20px",
+      marginBottom: "16px",
     },
 
     bullet: {
@@ -62,49 +71,40 @@ export default function AboutSection() {
     },
 
     resumeButton: {
-      marginTop: "25px",
-      padding: "12px 28px",
-      fontSize: "16px",
+      marginTop: "18px",
+      padding: isMobile ? "10px 22px" : "12px 28px",
+      fontSize: "15px",
       fontWeight: 700,
       borderRadius: "30px",
       textDecoration: "none",
       color: "white",
       background: "linear-gradient(90deg, #4b6bfb, #8a4dfc)",
       display: "inline-block",
-      boxShadow: "0 0 18px rgba(120,80,255,0.4)",
-    },
-
-    mobile: {
-      display: "flex",
-      flexDirection: "column-reverse",
-      alignItems: "center",
-      textAlign: "center",
-      gap: "30px",
+      boxShadow: "0 0 15px rgba(120,80,255,0.4)",
     },
   };
 
   return (
     <section id="about" style={styles.section}>
       <div style={isMobile ? styles.mobile : styles.container}>
-        
-        {/* PROFILE IMAGE */}
+
+        {/* IMAGE */}
         <div style={styles.leftImageBox}>
           <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
         </div>
 
-        {/* ABOUT TEXT */}
+        {/* TEXT */}
         <div>
           <h2 style={styles.heading}>About Me</h2>
 
           <p style={styles.textBlock}>
-            Hello! I’m <strong>Mounika</strong>, a passionate 
-            <span style={styles.bullet}> Full Stack Developer</span> who loves
-            building clean, functional, and modern web applications.
+            Hello! I’m <strong>Mounika</strong>, a passionate
+            <span style={styles.bullet}> Full Stack Developer</span>.
           </p>
 
           <p style={styles.textBlock}>
-            I completed my MCA with 
-            <span style={styles.bullet}> 77.4%</span> and completed a full-stack 
+            I completed my MCA with
+            <span style={styles.bullet}> 77.4%</span> and finished a full-stack
             internship at <span style={styles.bullet}>XCEL Corp</span>.
           </p>
 
