@@ -15,9 +15,9 @@ export default function Home() {
     let charIndex = 0;
 
     const type = () => {
-      if (typingRef.current) {
+      if (typingRef.current)
         typingRef.current.textContent = texts[index].slice(0, charIndex);
-      }
+
       charIndex++;
 
       if (charIndex > texts[index].length) {
@@ -37,52 +37,89 @@ export default function Home() {
 
   const styles = {
     section: {
+      position: "relative",
       minHeight: "100vh",
       width: "100%",
-      padding: isMobile ? "100px 20px 40px" : "120px 70px",
-      background:
-        "linear-gradient(135deg, #060606, #0b0b0b, #111, #0d0d0d, #000)",
+      padding: isMobile ? "110px 25px 60px" : "140px 70px",
       color: "white",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
-      animation: "fadeInSlow 1.4s ease-out forwards",
       textAlign: isMobile ? "center" : "left",
       alignItems: isMobile ? "center" : "flex-start",
+      overflow: "hidden",
+      background: "radial-gradient(circle at 20% 30%, #1a1a1a, #000)",
+      animation: "fadeInSlow 1.4s ease-out forwards",
+    },
+
+    floatingShape1: {
+      position: "absolute",
+      top: "-80px",
+      right: "-60px",
+      width: "250px",
+      height: "250px",
+      background: "linear-gradient(135deg, #ff7ae0, #6b6bff)",
+      filter: "blur(80px)",
+      animation: "float 6s infinite ease-in-out",
+      opacity: 0.4,
+      borderRadius: "50%",
+    },
+
+    floatingShape2: {
+      position: "absolute",
+      bottom: "-60px",
+      left: "-50px",
+      width: "260px",
+      height: "260px",
+      background: "linear-gradient(135deg, #4fd1ff, #00ffaa)",
+      filter: "blur(90px)",
+      animation: "float 7s infinite ease-in-out reverse",
+      opacity: 0.3,
+      borderRadius: "50%",
+    },
+
+    cardGlow: {
+      position: "absolute",
+      inset: "0",
+      background: "linear-gradient(120deg, rgba(255,255,255,0.15), rgba(255,255,255,0.03))",
+      backdropFilter: "blur(20px)",
+      borderRadius: "20px",
+      zIndex: -1,
     },
 
     title: {
       fontSize: isMobile ? "36px" : "60px",
       fontWeight: "900",
       lineHeight: "1.2",
-      marginBottom: "15px",
-      animation: "slideDown 1s ease-out",
+      marginBottom: "18px",
+      animation: "slideDown 1.2s ease-out",
+      letterSpacing: "1px",
     },
 
     gradientName: {
       background: "linear-gradient(90deg,#4fd1ff,#d16bff,#ff79c6,#ffcc70)",
       WebkitBackgroundClip: "text",
       color: "transparent",
-      textShadow: "0 0 18px rgba(255,255,255,0.15)",
+      textShadow: "0 0 20px rgba(255,255,255,0.1)",
     },
 
     typing: {
-      fontSize: isMobile ? "20px" : "28px",
+      fontSize: isMobile ? "22px" : "30px",
       fontWeight: "700",
-      marginBottom: "22px",
-      minHeight: "32px",
+      marginBottom: "25px",
+      minHeight: "34px",
+      letterSpacing: "0.7px",
       color: "#4fd1ff",
-      letterSpacing: "0.5px",
-      animation: "slideUp 1s ease",
+      animation: "fadeUp 1.2s ease",
     },
 
     subtitle: {
-      maxWidth: "580px",
+      maxWidth: "640px",
       fontSize: isMobile ? "16px" : "20px",
       lineHeight: "1.8",
       color: "#d7d7d7",
-      marginBottom: "40px",
-      animation: "fadeUp 1.2s ease-out",
+      marginBottom: "45px",
+      animation: "fadeUp 1.4s ease",
     },
 
     buttonWrapper: {
@@ -102,7 +139,7 @@ export default function Home() {
       fontSize: isMobile ? "16px" : "18px",
       width: isMobile ? "100%" : "auto",
       textAlign: "center",
-      boxShadow: "0 0 15px rgba(79,209,255,0.5)",
+      boxShadow: "0 0 20px rgba(79,209,255,0.5)",
       transition: "0.3s",
     },
 
@@ -122,6 +159,10 @@ export default function Home() {
 
   return (
     <section id="home" style={styles.section}>
+      {/* Floating neon shapes */}
+      <div style={styles.floatingShape1}></div>
+      <div style={styles.floatingShape2}></div>
+
       <h1 style={styles.title}>
         Hi, I'm <span style={styles.gradientName}>Mounika M</span>
       </h1>
@@ -129,8 +170,8 @@ export default function Home() {
       <h2 ref={typingRef} style={styles.typing}></h2>
 
       <p style={styles.subtitle}>
-        I build modern, responsive and high-performance MERN stack applications.
-        Skilled in React, Node.js, MongoDB, and UI/UX-driven web development.
+        I build high-performance and responsive MERN stack applications with a
+        strong focus on UI, animations and modern user experience.
       </p>
 
       <div style={styles.buttonWrapper}>
@@ -144,19 +185,20 @@ export default function Home() {
           100% { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes slideUp {
-          0% { opacity: 0; transform: translateY(18px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeUp {
-          0% { opacity: 0; }
-          100% { opacity: 1; }
-        }
-
         @keyframes slideDown {
           0% { opacity: 0; transform: translateY(-20px);}
           100% { opacity: 1; transform: translateY(0);}
+        }
+
+        @keyframes fadeUp {
+          0% { opacity: 0; transform: translateY(20px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-25px); }
+          100% { transform: translateY(0); }
         }
       `}</style>
     </section>
