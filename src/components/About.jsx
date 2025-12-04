@@ -44,7 +44,6 @@ export default function AboutSection() {
       fontSize: "40px",
       fontWeight: "800",
       marginBottom: "15px",
-      background: "linear-gradient(90deg, #7ef0ff, #ba7bff)",
       WebkitBackgroundClip: "text",
       color: "transparent",
     },
