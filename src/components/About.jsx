@@ -97,19 +97,27 @@ export default function AboutSection() {
 
           <p style={styles.textBlock}>
             Hello! I’m <strong>Mounika</strong>, a passionate 
-            <span style={styles.bullet}> Full Stack Developer</span> who loves building 
-            clean, functional, and modern web applications.
+            <span style={styles.bullet}> Full Stack Developer</span> eager to build 
+            clean, responsive and functional web applications.
           </p>
 
           <p style={styles.textBlock}>
             I completed my MCA with 
-            <span style={styles.bullet}> 77.4%</span> and completed a full-stack 
-            internship at <span style={styles.bullet}>XCEL Corp</span>.
+            <span style={styles.bullet}> 77.4%</span> from CIMS, Bengaluru and 
+            have hands-on full-stack experience from my internship at 
+            <span style={styles.bullet}> XCEL Corp</span>.
           </p>
 
           <p style={styles.textBlock}>
-            <span style={styles.bullet}>Technical Skills:</span> HTML, CSS,
-            JavaScript, React.js, Node.js, Django, Python, MongoDB, SQL, Git, GitHub.
+            <span style={styles.bullet}>Technical Skills:</span> HTML, CSS, JavaScript, 
+            React.js, Bootstrap, Node.js, Express.js, Django, Python, MongoDB, 
+            SQLite, PostgreSQL, Git, GitHub, VS Code, Postman.
+          </p>
+
+          <p style={styles.textBlock}>
+            <span style={styles.bullet}>Projects:</span> BookEcho (Django), Village 
+            Community Hub (MERN), E-commerce Site (Java & SQL), Banking System 
+            (PHP & SQL), Organic Web Store (PHP & SQL).
           </p>
 
           <a
@@ -117,7 +125,7 @@ export default function AboutSection() {
             download
             style={styles.resumeButton}
           >
-            ⬇ Download Resume fff
+            ⬇ Download Resume
           </a>
         </div>
       </div>
