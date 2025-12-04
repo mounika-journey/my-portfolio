@@ -21,16 +21,17 @@ export default function AboutSection() {
     },
 
     leftImageBox: {
-      width: imageSize,
-      height: imageSize,
-      borderRadius: "50%",
-      border: "5px solid #1f4fff",
-      padding: "4px",
-      background: "linear-gradient(180deg, #4cbfff, #b36bff)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
+  width: imageSize,
+  height: imageSize,
+  borderRadius: "50%",
+  border: "5px solid #1f4fff",
+  padding: "2px", // smaller padding = cleaner circle
+  background: "linear-gradient(180deg, #4cbfff, #b36bff)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+},
+
 
     profileImage: {
       width: "100%",
