@@ -3,159 +3,196 @@ import styled from "styled-components";
 import emailjs from "@emailjs/browser";
 import { Snackbar } from "@mui/material";
 
-/* ---------------- MAIN SECTION ---------------- */
-const Section = styled.section`
+/* ------------ GLOBAL BACKGROUND ------------ */
+const Container = styled.div`
   width: 100%;
-  padding: 70px 20px;
-  background: linear-gradient(180deg, #050505, #0a0a0f);
-  display: flex;
-  justify-content: center;
-  color: white;
+  padding: 70px 0; /* reduced from 100px */
+  background: linear-gradient(180deg, #050505, #09090f);
+  color: #fff;
 `;
 
-/* ---------------- WRAPPER ---------------- */
+/* ------------ WRAPPER ------------ */
 const Wrapper = styled.div`
-  width: 100%;
-  max-width: 560px;   /* 🔥 reduced width */
-  text-align: center;
-  animation: fadeIn 1s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* reduced gap between heading & subtext */
 
-  @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(30px); }
+  animation: fadeUp 1.2s ease;
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(40px); }
     100% { opacity: 1; transform: translateY(0); }
   }
 `;
 
-/* ---------------- HEADING ---------------- */
-const Heading = styled.h2`
-  font-size: 38px;   /* 🔥 smaller */
+/* ------------ HEADING ------------ */
+const Title = styled.h2`
+  margin-bottom: 5px; /* reduced */
+  font-size: 48px; /* slightly reduced from 50px */
   font-weight: 800;
-  margin-bottom: 8px;
 
-  background: linear-gradient(90deg, #5dd0ff, #c78aff);
+  background: linear-gradient(90deg, #7ef0ff, #c97bff);
   -webkit-background-clip: text;
   color: transparent;
-`;
 
-const SubText = styled.p`
-  font-size: 15px;   /* 🔥 slightly smaller */
-  opacity: 0.75;
-  margin-bottom: 28px;
-`;
+  animation: glow 2s ease-in-out infinite alternate;
 
-/* ---------------- FORM CARD ---------------- */
-const Form = styled.form`
-  padding: 28px;   /* 🔥 reduced */
-  border-radius: 18px;
-  background: rgba(255,255,255,0.07);
-  backdrop-filter: blur(13px);
-  border: 1px solid rgba(255,255,255,0.15);
-
-  animation: pop 0.6s ease;
-
-  @keyframes pop {
-    0% { opacity: 0; transform: scale(0.92); }
-    100% { opacity: 1; transform: scale(1); }
+  @keyframes glow {
+    from { text-shadow: 0 0 20px #7ef0ff88; }
+    to { text-shadow: 0 0 40px #c97bffcc; }
   }
 `;
 
-/* ---------------- INPUT STYLE ---------------- */
+const Desc = styled.p`
+  font-size: 17px;
+  max-width: 520px;
+  text-align: center;
+  opacity: 0.8;
+  margin-bottom: 15px; /* reduced from default */
+`;
+
+/* ------------ FORM ------------ */
+const ContactForm = styled.form`
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 18px;
+
+
+  padding: 32px; /* reduced padding */
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+
+  animation: floatCard 4s ease-in-out infinite;
+
+  @keyframes floatCard {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+  }
+`;
+
+const ContactTitle = styled.h3`
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px; /* reduced */
+  color: #dff6ff;
+`;
+
+/* ------------ INPUTS ------------ */
 const baseInput = `
   width: 100%;
-  padding: 12px;      /* 🔥 smaller height */
-  margin-top: 12px;
-  border-radius: 10px;
+  box-sizing: border-box;
 
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.15);
-  color: white;
-  font-size: 14px;     /* 🔥 smaller font */
-  outline: none;
-  transition: 0.25s ease;
+  padding: 14px 16px; /* reduced */
+  font-size: 16px; /* reduced */
+  border-radius: 12px;
 
-  &:focus {
-    border-color: #63d4ff;
-    box-shadow: 0 0 10px #63d4ff77;
-    transform: scale(1.01);
-  }
-
-  &::placeholder {
-    color: #d4d4d4;
-  }
-`;
-
-const Input = styled.input`${baseInput}`;
-
-const TextArea = styled.textarea`
-  ${baseInput}
-  min-height: 110px;    /* 🔥 reduced height */
-  resize: none;
-`;
-
-/* ---------------- BUTTON ---------------- */
-const Button = styled.button`
-  margin-top: 18px;
-  padding: 12px;       /* 🔥 slimmer button */
-  border-radius: 10px;
-  width: 100%;
-  font-size: 16px;     /* 🔥 smaller font */
-  font-weight: 700;
   border: none;
-  cursor: pointer;
+  outline: none;
 
-  background: linear-gradient(90deg, #5bd7ff, #b37aff);
-  color: white;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  color: #fff;
 
   transition: 0.3s ease;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 14px rgba(160, 160, 255, 0.6);
+  &:focus {
+    border-color: #7ef0ff;
+    box-shadow: 0 0 10px #7ef0ffcc;
+    transform: scale(1.015);
+  }
+
+  &::placeholder {
+    color: #aaa;
   }
 `;
 
-export default function Contact() {
-  const formRef = useRef();
-  const [open, setOpen] = useState(false);
+const ContactInput = styled.input`${baseInput}`;
 
-  const sendEmail = (e) => {
+const ContactInputMessage = styled.textarea`
+  ${baseInput}
+  min-height: 120px; /* slightly reduced */
+`;
+
+/* ------------ BUTTON ------------ */
+const ContactButton = styled.input`
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+
+  color: #fff;
+  background: linear-gradient(225deg, #7ef0ff, #c97bff);
+
+  transition: 0.3s ease;
+  box-shadow: 0 0 12px rgba(128, 214, 255, 0.4);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(128, 214, 255, 0.9);
+  }
+
+`;
+
+/* ------------ CONTACT COMPONENT ------------ */
+const Contact = () => {
+  const [open, setOpen] = useState(false);
+  const form = useRef();
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        "service_ieo9cxl",
-        "template_y9hel01",
-        formRef.current,
-        "2cQrDr7g2C3SNQ9u7"
-      )
-      .then(() => {
-        setOpen(true);
-        formRef.current.reset();
-      });
+    emailjs.sendForm(
+      "service_ieo9cxl",
+      "template_y9hel01",
+      form.current,
+      "2cQrDr7g2C3SNQ9u7"
+    )
+    .then(() => {
+      setOpen(true);
+      form.current.reset();
+    })
+    .catch((error) => console.log("Email Error:", error));
   };
 
   return (
-    <Section id="contact">
+    <Container id="contact">
       <Wrapper>
-        <Heading>Contact</Heading>
-        <SubText>Send me a message — I’ll reply soon!</SubText>
+        <Title>Contact</Title>
+        <Desc>Feel free to reach out for any opportunities or collaborations!</Desc>
 
-        <Form ref={formRef} onSubmit={sendEmail}>
-          <Input name="from_name" placeholder="Your Name" required />
-          <Input name="from_email" placeholder="Your Email" required />
-          <Input name="subject" placeholder="Subject" required />
-          <TextArea name="message" placeholder="Message" required />
+        <ContactForm ref={form} onSubmit={handleSubmit}>
+          <ContactTitle>Send me a message ✨</ContactTitle>
 
-          <Button type="submit">Send Message</Button>
-        </Form>
+          <ContactInput placeholder="Your Email" name="from_email" required />
+          <ContactInput placeholder="Your Name" name="from_name" required />
+          <ContactInput placeholder="Subject" name="subject" required />
+          <ContactInputMessage placeholder="Message" name="message" required />
+
+          <ContactButton type="submit" value="Send Message" />
+        </ContactForm>
 
         <Snackbar
           open={open}
-          autoHideDuration={3500}
+          autoHideDuration={4000}
           onClose={() => setOpen(false)}
-          message="Message Sent Successfully!"
+          message="Email sent successfully!"
         />
       </Wrapper>
-    </Section>
+    </Container>
   );
-}
+};
+
+export default Contact;
