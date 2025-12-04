@@ -2,7 +2,7 @@ import React from "react";
 
 export default function AboutSection() {
   const isMobile = window.innerWidth <= 768;
-  const imageSize = isMobile ? "220px" : "280px";
+  const imageSize = isMobile ? "260px" : "320px";
 
   const styles = {
     section: {
@@ -17,27 +17,28 @@ export default function AboutSection() {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      gap: "40px",
+      gap: "50px",
     },
 
-    /* ---- SIMPLE PERFECT CIRCLE IMAGE ---- */
+    /* -------- PROFILE IMAGE CIRCLE (FIXED) -------- */
     leftImageBox: {
       width: imageSize,
       height: imageSize,
       borderRadius: "50%",
       border: "5px solid #1f4fff",
-      overflow: "hidden",
+      overflow: "hidden",        // stops the block color
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      background: "#000", // no visible block
+      background: "transparent",
     },
 
     profileImage: {
-      width: "100%",
+      width: "100%",             // perfect circular fill
       height: "100%",
       objectFit: "cover",
       objectPosition: "center",
+      borderRadius: "50%",
     },
 
     heading: {
@@ -65,7 +66,7 @@ export default function AboutSection() {
       marginTop: "25px",
       padding: "12px 28px",
       fontSize: "16px",
-      fontWeight: 700,
+      fontWeight: "700",
       borderRadius: "30px",
       textDecoration: "none",
       color: "white",
@@ -86,7 +87,7 @@ export default function AboutSection() {
   return (
     <section id="about" style={styles.section}>
       <div style={isMobile ? styles.mobile : styles.container}>
-        
+
         {/* PROFILE IMAGE */}
         <div style={styles.leftImageBox}>
           <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
