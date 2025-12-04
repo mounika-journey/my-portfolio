@@ -1,25 +1,15 @@
 import React from "react";
 
 export default function AboutSection() {
+  const isMobile = window.innerWidth <= 768;
+
   const styles = {
     section: {
       padding: "100px 20px",
       background: "linear-gradient(180deg, #020202, #090909, #050505)",
       color: "white",
       textAlign: "center",
-      marginTop:'-10px'
-    },
-
-    container: {
-      maxWidth: "1100px",
-      margin: "0 auto",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      flexWrap: "wrap",
-      gap: "40px",
-      animation: "fadeUp 1.2s ease",
-      marginTop:'30px'
+      marginTop: "-10px",
     },
 
     heading: {
@@ -29,14 +19,45 @@ export default function AboutSection() {
       WebkitBackgroundClip: "text",
       color: "transparent",
       marginBottom: "50px",
-      marginTop:'-30px'
+      marginTop: "-30px",
+    },
+
+    container: {
+      maxWidth: "1100px",
+      margin: "0 auto",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "30px",
+      flexDirection: isMobile ? "row" : "row",  // ⭐ IMAGE + TEXT SIDE BY SIDE IN MOBILE
+      flexWrap: isMobile ? "nowrap" : "wrap",
+      textAlign: isMobile ? "left" : "left",
+      animation: "fadeUp 1.2s ease",
+    },
+
+    imgCard: {
+      flex: "0 0 180px",
+      padding: "8px",
+      background: "linear-gradient(90deg,#00eaff,#e700ff)",
+      borderRadius: "16px",
+      border: "1px solid rgba(255,255,255,0.1)",
+      backdropFilter: "blur(12px)",
+      boxShadow: "0 20px 60px rgba(0, 234, 255, 0.08)",
+      transition: "0.4s ease",
+    },
+
+    img: {
+      width: isMobile ? "160px" : "100%",
+      height: isMobile ? "160px" : "auto",
+      borderRadius: "14px",
+      objectFit: "cover",
     },
 
     textBox: {
-      flex: "1 1 520px",
-      textAlign: "left",
+      flex: "1",
+      textAlign: isMobile ? "left" : "left",
       lineHeight: "1.7",
-      fontSize: "18px",
+      fontSize: isMobile ? "15px" : "18px",
       color: "#d6eaff",
     },
 
@@ -45,28 +66,11 @@ export default function AboutSection() {
       fontWeight: 600,
     },
 
-    imgCard: {
-      flex: "0 0 340px",
-      padding: "10px",
-      background: "linear-gradient(90deg,#00eaff,#e700ff)",
-      borderRadius: "18px",
-      border: "1px solid rgba(255,255,255,0.1)",
-      backdropFilter: "blur(10px)",
-      boxShadow: "0 20px 60px rgba(0, 234, 255, 0.08)",
-      transition: "0.4s ease",
-    },
-
-    img: {
-      width: "100%",
-      borderRadius: "14px",
-      objectFit: "cover",
-    },
-
     resumeBtn: {
       display: "inline-block",
       marginTop: "25px",
       padding: "14px 28px",
-      fontSize: "18px",
+      fontSize: "17px",
       fontWeight: 700,
       borderRadius: "12px",
       textDecoration: "none",
@@ -79,11 +83,23 @@ export default function AboutSection() {
 
   return (
     <section id="about" style={styles.section}>
-      <h2 style={styles.heading}>About Mem</h2>
+      <h2 style={styles.heading}>About Me</h2>
 
       <div style={styles.container}>
-        
-        {/* Text Section */}
+        {/* Image Left on Mobile */}
+        <div
+          style={styles.imgCard}
+          onMouseEnter={(e) =>
+            (e.currentTarget.style.transform = "translateY(-10px) scale(1.05)")
+          }
+          onMouseLeave={(e) =>
+            (e.currentTarget.style.transform = "translateY(0) scale(1)")
+          }
+        >
+          <img src="/profile.jpeg" style={styles.img} alt="Mounika" />
+        </div>
+
+        {/* Text Right on Mobile */}
         <div style={styles.textBox}>
           <p>
             Hi, I’m <strong>Mounika</strong>, a passionate
@@ -98,40 +114,20 @@ export default function AboutSection() {
           </p>
 
           <p>
-            <span style={styles.bullet}>Technical Skills:</span>
-            HTML, CSS, JavaScript, React.js, Node.js, Express.js, Django, Python,
-            MongoDB, SQLite, PostgreSQL, Git, GitHub, Postman.
+            <span style={styles.bullet}>Technical Skills:</span> HTML, CSS,
+            JavaScript, React.js, Node.js, Express.js, Django, Python, MongoDB,
+            SQLite, PostgreSQL, Git, GitHub, Postman.
           </p>
 
           <p>
-            I enjoy building responsive UI, clean backend APIs, and meaningful digital
-            experiences. I’m currently seeking opportunities as a
+            I enjoy building responsive UI, clean backend APIs, and meaningful
+            digital experiences. I’m currently seeking opportunities as a
             <span style={styles.bullet}> Full Stack Developer / MERN Developer</span>.
           </p>
 
-          {/* ⭐ Download Resume Button */}
-          <a
-            href="/Mounika_M_Resume.pdf"
-            download
-            style={styles.resumeBtn}
-            onMouseEnter={(e) => (e.target.style.transform = "scale(1.07)")}
-            onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
-          >
+          <a href="/Mounika_M_Resume.pdf" download style={styles.resumeBtn}>
             ⬇ Download Resume
           </a>
-        </div>
-
-        {/* Image Section */}
-        <div
-          style={styles.imgCard}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.transform = "translateY(-10px) scale(1.03)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.transform = "translateY(0) scale(1)")
-          }
-        >
-          <img src="/profile.jpeg" style={styles.img} alt="Mounika" />
         </div>
       </div>
 

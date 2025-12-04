@@ -29,7 +29,7 @@ function Navbar() {
 
       {/* LOGO */}
       <h2 style={{ color: "#9ad8ff", fontWeight: 800, fontSize: "26px" }}>
-        Mounika M m
+        Mounika M 
       </h2>
 
       {/* DESKTOP MENU */}
