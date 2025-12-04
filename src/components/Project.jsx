@@ -35,7 +35,7 @@ export default function ProjectsSection() {
     {
       title: "Banking System",
       description:
-        "A banking web application for handling user transactions and maintaining records.",
+        "A web application for handling user transactions and maintaining records.",
       tech: ["PHP", "SQL"],
     },
     {
@@ -90,6 +90,7 @@ export default function ProjectsSection() {
 
       {/* Project Cards Grid */}
       <div
+        className="projects-grid"
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
@@ -104,6 +105,7 @@ export default function ProjectsSection() {
             key={index}
             style={{
               padding: 25,
+              height: "260px", // ✨ SAME HEIGHT FOR ALL CARDS
               borderRadius: 20,
               background: "rgba(255, 255, 255, 0.06)",
               border: "1px solid rgba(255, 255, 255, 0.15)",
@@ -132,6 +134,7 @@ export default function ProjectsSection() {
             <h3
               style={{
                 fontSize: "1.4rem",
+                fontWeight: 700,
                 marginBottom: 12,
                 background: "linear-gradient(90deg,#7df3ff,#cc7bff)",
                 WebkitBackgroundClip: "text",
@@ -146,7 +149,7 @@ export default function ProjectsSection() {
                 color: "#d1e7ff",
                 marginBottom: 15,
                 lineHeight: "1.6",
-                fontSize: "0.95rem",
+                fontSize: "0.93rem",
               }}
             >
               {p.description}
@@ -182,11 +185,10 @@ export default function ProjectsSection() {
           100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mobile: 2 projects in one row */
         @media (max-width: 600px) {
-          #projects div[style*="grid"] {
+          .projects-grid {
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 15px !important;
+            gap: 18px !important;
           }
 
           #projects h2 {
