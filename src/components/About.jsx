@@ -3,74 +3,80 @@ import React from "react";
 export default function AboutSection() {
   const styles = {
     section: {
-      padding: "80px 20px",
-      background: "linear-gradient(180deg, #020202, #090909, #050505)",
+      padding: "90px 20px",
+      background: "#0b0c10",
       color: "white",
-      textAlign: "center",
-    },
-
-    heading: {
-      fontSize: "42px",
-      fontWeight: "800",
-      background: "linear-gradient(90deg, #7ef0ff, #c97bff)",
-      WebkitBackgroundClip: "text",
-      color: "transparent",
-      marginBottom: "50px",
     },
 
     container: {
-      maxWidth: "1100px",
+      maxWidth: "1150px",
       margin: "0 auto",
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
+      display: "flex",
       alignItems: "center",
-      gap: "40px",
+      justifyContent: "space-between",
+      gap: "50px",
     },
 
-    /* MOBILE FIX → 2 column image + text */
-    mobileContainer: {
-      display: "grid",
-      gridTemplateColumns: "120px auto",
-      alignItems: "center",
-      gap: "20px",
-    },
-
-    imgCard: {
+    leftImageBox: {
+      width: "280px",
+      height: "280px",
+      borderRadius: "50%",
+      border: "5px solid #1f4fff",
       padding: "4px",
-      background: "linear-gradient(90deg,#00eaff,#e700ff)",
-      borderRadius: "14px",
+      background: "linear-gradient(180deg, #4cbfff, #b36bff)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
     },
 
-    img: {
+    profileImage: {
       width: "100%",
-      height: "120px",
-      borderRadius: "12px",
+      height: "100%",
+      borderRadius: "50%",
       objectFit: "cover",
     },
 
-    textBox: {
-      textAlign: "left",
-      lineHeight: "1.7",
+    heading: {
+      fontSize: "40px",
+      fontWeight: "800",
+      marginBottom: "15px",
+      background: "linear-gradient(90deg, #7ef0ff, #ba7bff)",
+      WebkitBackgroundClip: "text",
+      color: "transparent",
+    },
+
+    textBlock: {
       fontSize: "17px",
-      color: "#d6eaff",
+      lineHeight: "1.8",
+      color: "#d9e7ff",
+      marginBottom: "20px",
     },
 
     bullet: {
-      color: "#9ad8ff",
-      fontWeight: 600,
+      color: "#8cd1ff",
+      fontWeight: 700,
     },
 
-    resumeBtn: {
+    resumeButton: {
       marginTop: "25px",
-      padding: "12px 25px",
+      padding: "12px 28px",
       fontSize: "16px",
       fontWeight: 700,
-      borderRadius: "10px",
+      borderRadius: "30px",
       textDecoration: "none",
       color: "white",
+      background: "linear-gradient(90deg, #4b6bfb, #8a4dfc)",
       display: "inline-block",
-      background: "linear-gradient(90deg, #00eaff, #ff00ff)",
-      boxShadow: "0 0 15px rgba(0, 234, 255, 0.4)",
+      boxShadow: "0 0 18px rgba(120,80,255,0.4)",
+    },
+
+    /* MOBILE RESPONSIVE */
+    mobile: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      textAlign: "center",
+      gap: "30px",
     },
   };
 
@@ -78,35 +84,40 @@ export default function AboutSection() {
 
   return (
     <section id="about" style={styles.section}>
-      <h2 style={styles.heading}>About Me</h2>
-
-      <div style={isMobile ? styles.mobileContainer : styles.container}>
+      <div style={isMobile ? styles.mobile : styles.container}>
         
-        {/* Image */}
-        <div style={styles.imgCard}>
-          <img src="/profile.jpeg" style={styles.img} alt="Mounika" />
+        {/* PROFILE IMAGE */}
+        <div style={styles.leftImageBox}>
+          <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
         </div>
 
-        {/* Text */}
-        <div style={styles.textBox}>
-          <p>
-            Hi, I’m <strong>Mounika</strong>, a passionate
-            <span style={styles.bullet}> Full Stack Developer (MERN + Django)</span>
-            who loves creating modern and user-friendly applications.
+        {/* RIGHT TEXT */}
+        <div>
+          <h2 style={styles.heading}>About Me</h2>
+
+          <p style={styles.textBlock}>
+            Hello! I’m <strong>Mounika</strong>, a passionate 
+            <span style={styles.bullet}> Full Stack Developer</span> who loves building 
+            clean, functional, and modern web applications.
           </p>
 
-          <p>
-            I completed my MCA with <span style={styles.bullet}>77.4%</span> and
-            completed a full-stack internship at <span style={styles.bullet}>XCEL Corp</span>.
+          <p style={styles.textBlock}>
+            I completed my MCA with 
+            <span style={styles.bullet}> 77.4%</span> and completed a full-stack 
+            internship at <span style={styles.bullet}>XCEL Corp</span>.
           </p>
 
-          <p>
+          <p style={styles.textBlock}>
             <span style={styles.bullet}>Technical Skills:</span> HTML, CSS,
-            JavaScript, React.js, Node.js, Django, Python, MongoDB, Git, GitHub, SQL.
+            JavaScript, React.js, Node.js, Django, Python, MongoDB, SQL, Git, GitHub.
           </p>
 
-          <a href="/Mounika_M_Resume.pdf" download style={styles.resumeBtn}>
-            ⬇ Download Resume
+          <a
+            href="/Mounika_M_Resume.pdf"
+            download
+            style={styles.resumeButton}
+          >
+            ⬇ Download Resume fff
           </a>
         </div>
       </div>

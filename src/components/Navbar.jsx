@@ -1,76 +1,102 @@
+import { useState } from "react";
+import { GiHamburgerMenu } from "react-icons/gi";
+
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
   const navStyle = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "14px 20px",
-    background: "rgba(0,0,0,0.85)",
-    backdropFilter: "blur(8px)",
-    position: "fixed",
+    padding: "20px 45px",
+    background: "linear-gradient(180deg, #020202, #090909, #050505)",
+    position: "sticky",
     top: 0,
-    width: "100%",
     zIndex: 1500,
-    borderBottom: "1px solid rgba(255,255,255,0.08)",
+    borderBottom: "1px solid rgba(255,255,255,0.1)",
   };
 
   const linkStyle = {
     color: "white",
     textDecoration: "none",
-    fontSize: "15px",
-    fontWeight: 500,
-    padding: "6px 10px",
+    fontSize: "16px",
+    fontWeight: 600,
+    padding: "8px 14px",
   };
 
   return (
     <nav style={navStyle}>
 
-      {/* LEFT LOGO */}
-      <h2 style={{ color: "white", fontWeight: 700, fontSize: "20px" }}>
-        Mounika.
+      {/* LOGO */}
+      <h2 style={{ color: "#9ad8ff", fontWeight: 800, fontSize: "26px" }}>
+        Mounika M 
       </h2>
 
-      {/* CENTER MENU */}
-      <div className="center-menu" style={{ display: "flex", gap: "20px" }}>
-        {["Home", "About", "Skills", "Projects", "Contact"].map((item) => (
+      {/* DESKTOP MENU */}
+      <div className="desktop-menu" style={{ display: "flex", gap: "22px" }}>
+        {["Home", "About", "Projects", "Certificates", "Contact"].map((item) => (
           <a key={item} href={`#${item.toLowerCase()}`} style={linkStyle}>
             {item}
           </a>
         ))}
       </div>
 
-      {/* RIGHT RESUME BUTTON */}
-      <a
-        href="/resume.pdf"
-        style={{
-          background:
-            "linear-gradient(90deg, #4b6bfb, #8a4dfc)",
-          color: "white",
-          padding: "8px 16px",
-          borderRadius: "25px",
-          fontSize: "14px",
-          fontWeight: 600,
-          textDecoration: "none",
-        }}
-      >
-        Resume s
-      </a>
+      {/* HAMBURGER ICON */}
+      <GiHamburgerMenu
+        className="mobile-icon"
+        size={28}
+        color="white"
+        style={{ display: "none", cursor: "pointer" }}
+        onClick={() => setOpen(!open)}
+      />
+
+      {/* MOBILE DROPDOWN */}
+      {open && (
+        <div className="mobile-menu">
+          {["Home", "About", "Projects", "Certificates", "Contact"].map(
+            (item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                style={linkStyle}
+                onClick={() => setOpen(false)}
+              >
+                {item}
+              </a>
+            )
+          )}
+        </div>
+      )}
 
       <style>
         {`
+          /* Mobile menu */
+          .mobile-menu {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: #111;
+            padding: 18px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+          }
+
           /* MOBILE RESPONSIVE */
           @media (max-width: 768px) {
+            .desktop-menu {
+              display: none !important; /* hide big menu */
+            }
+            .mobile-icon {
+              display: block !important;
+            }
             nav {
-              padding: 12px 14px !important;
-            }
-            .center-menu {
-              gap: 12px !important;
-            }
-            .center-menu a {
-              font-size: 12px !important;
-              padding: 4px 6px !important;
+              padding: 14px 20px !important;
             }
             nav h2 {
-              font-size: 16px !important;
+              font-size: 20px !important;
             }
           }
         `}
