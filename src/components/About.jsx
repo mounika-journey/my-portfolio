@@ -1,123 +1,126 @@
 import React from "react";
 
 export default function AboutSection() {
-  return (
-    <section
-      id="about"
-      style={{
-        background: "#0d1117",
-        padding: "80px 20px",
-        color: "white",
-      }}
-    >
-      {/* Heading */}
-      <h2
-        style={{
-          textAlign: "center",
-          fontSize: "38px",
-          fontWeight: "800",
-          marginBottom: "60px",
-          background: "linear-gradient(90deg, #7ef0ff, #c97bff)",
-          WebkitBackgroundClip: "text",
-          color: "transparent",
-        }}
-      >
-        About Me
-      </h2>
+  const styles = {
+    section: {
+      padding: "90px 20px",
+      background: "#0b0c10",
+      color: "white",
+    },
 
-      {/* Main Container */}
-      <div
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "50px",
-          flexWrap: "wrap",
-        }}
-      >
-        {/* Profile Image with Border */}
-        <div
-          style={{
-            width: "220px",
-            height: "220px",
-            borderRadius: "50%",
-            padding: "4px",
-            background: "linear-gradient(90deg, #00eaff, #e700ff)",
-          }}
-        >
-          <img
-            src={"/mnt/data/WhatsApp Image 2025-12-04 at 10.23.47 AM.jpeg"}
-            alt="Mounika"
-            style={{
-              width: "100%",
-              height: "100%",
-              borderRadius: "50%",
-              objectFit: "cover",
-            }}
-          />
+    container: {
+      maxWidth: "1150px",
+      margin: "0 auto",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: "50px",
+    },
+
+    leftImageBox: {
+      width: "280px",
+      height: "280px",
+      borderRadius: "50%",
+      border: "5px solid #1f4fff",
+      padding: "4px",
+      background: "linear-gradient(180deg, #4cbfff, #b36bff)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+
+    profileImage: {
+      width: "100%",
+      height: "100%",
+      borderRadius: "50%",
+      objectFit: "cover",
+    },
+
+    heading: {
+      fontSize: "40px",
+      fontWeight: "800",
+      marginBottom: "15px",
+      background: "linear-gradient(90deg, #7ef0ff, #ba7bff)",
+      WebkitBackgroundClip: "text",
+      color: "transparent",
+    },
+
+    textBlock: {
+      fontSize: "17px",
+      lineHeight: "1.8",
+      color: "#d9e7ff",
+      marginBottom: "20px",
+    },
+
+    bullet: {
+      color: "#8cd1ff",
+      fontWeight: 700,
+    },
+
+    resumeButton: {
+      marginTop: "25px",
+      padding: "12px 28px",
+      fontSize: "16px",
+      fontWeight: 700,
+      borderRadius: "30px",
+      textDecoration: "none",
+      color: "white",
+      background: "linear-gradient(90deg, #4b6bfb, #8a4dfc)",
+      display: "inline-block",
+      boxShadow: "0 0 18px rgba(120,80,255,0.4)",
+    },
+
+    /* MOBILE RESPONSIVE */
+    mobile: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      textAlign: "center",
+      gap: "30px",
+    },
+  };
+
+  const isMobile = window.innerWidth <= 768;
+
+  return (
+    <section id="about" style={styles.section}>
+      <div style={isMobile ? styles.mobile : styles.container}>
+        
+        {/* PROFILE IMAGE */}
+        <div style={styles.leftImageBox}>
+          <img src="/profile.jpeg" alt="Mounika" style={styles.profileImage} />
         </div>
 
-        {/* Text Section */}
-        <div style={{ maxWidth: "600px", lineHeight: "1.7", fontSize: "17px" }}>
-          <p>
-            Hi! I'm <strong style={{ color: "#9ad8ff" }}>Mounika</strong>, a
-            passionate developer who blends logic and creativity to build clean,
-            modern, and user-friendly digital experiences.
+        {/* RIGHT TEXT */}
+        <div>
+          <h2 style={styles.heading}>About Me</h2>
+
+          <p style={styles.textBlock}>
+            Hello! I’m <strong>Mounika</strong>, a passionate 
+            <span style={styles.bullet}> Full Stack Developer</span> who loves building 
+            clean, functional, and modern web applications.
           </p>
 
-          <p>
-            I enjoy working on{" "}
-            <strong style={{ color: "#9ad8ff" }}>
-              scalable and modular applications
-            </strong>{" "}
-            that create a real impact. I love solving problems, exploring modern
-            technologies, and crafting meaningful UI experiences.
+          <p style={styles.textBlock}>
+            I completed my MCA with 
+            <span style={styles.bullet}> 77.4%</span> and completed a full-stack 
+            internship at <span style={styles.bullet}>XCEL Corp</span>.
           </p>
 
-          <p>
-            My tech stack includes: <br />
-            <span style={{ color: "#9ad8ff", fontWeight: 600 }}>
-              React.js, JavaScript, Node.js, MongoDB, Django, Python, HTML, CSS,
-              Git, GitHub.
-            </span>
+          <p style={styles.textBlock}>
+            <span style={styles.bullet}>Technical Skills:</span> HTML, CSS,
+            JavaScript, React.js, Node.js, Django, Python, MongoDB, SQL, Git, GitHub.
           </p>
 
-          {/* Download Button */}
           <a
             href="/Mounika_M_Resume.pdf"
             download
-            style={{
-              marginTop: "20px",
-              display: "inline-block",
-              padding: "12px 28px",
-              borderRadius: "25px",
-              fontSize: "16px",
-              fontWeight: "600",
-              textDecoration: "none",
-              color: "white",
-              background:
-                "linear-gradient(90deg, #4a9eff, #bb55ff 60%, #ff00f5)",
-              transition: "0.3s",
-            }}
+            style={styles.resumeButton}
           >
-            ⬇ Download Resume ee
+            ⬇ Download Resume fff
           </a>
         </div>
       </div>
-
-      {/* Responsive CSS */}
-      <style>{`
-        @media (max-width: 768px) {
-          #about div {
-            text-align: center !important;
-          }
-          #about img {
-            margin-bottom: 20px;
-          }
-        }
-      `}</style>
     </section>
   );
 }
