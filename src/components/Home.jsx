@@ -123,7 +123,7 @@ export default function Home() {
   return (
     <section id="home" style={styles.section}>
       <h1 style={styles.title}>
-        Hi, I'm <span style={styles.gradientName}>Mounika</span>
+        Hi, I'm <span style={styles.gradientName}>Mounika M</span>
       </h1>
 
       <h2 ref={typingRef} style={styles.typing}></h2>
