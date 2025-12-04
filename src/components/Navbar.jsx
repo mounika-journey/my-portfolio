@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <>
       <nav className="nav">
-        <h2 className="logo">Mounika</h2>
+        <h2 className="logo">Mounika M</h2>
 
         {/* DESKTOP MENU */}
         <div className="desktop-menu">
