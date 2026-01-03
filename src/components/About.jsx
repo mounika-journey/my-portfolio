@@ -90,7 +90,11 @@ export default function AboutSection() {
 
         {/* IMAGE */}
         <div style={styles.leftImageBox}>
-          <img src="\profile1.jpeg" alt="Mounika" style={styles.profileImage} />
+<img
+  src="/profile1.jpeg"
+  alt="Mounika"
+  style={styles.profileImage}
+/>
         </div>
 
         {/* TEXT */}
